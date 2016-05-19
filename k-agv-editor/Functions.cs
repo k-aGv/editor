@@ -14,7 +14,7 @@ namespace k_agv_editor
     {
         Graphics gp;
         int res_offset;
-
+        
         PictureBox[] pb_array = new PictureBox[100];
         int array_counter = 0;
 
@@ -168,6 +168,7 @@ namespace k_agv_editor
         }
         private void exportMapToFile()
         {
+            
             sfd_map.Filter = "k-aGv Map (*.kmap)|*.kmap";
             if (sfd_map.ShowDialog() == DialogResult.OK)
             {
@@ -177,6 +178,8 @@ namespace k_agv_editor
                                         + map.GetLength(0)
                                         + " Height blocks:"
                                         + map.GetLength(1)
+                                        + " Resolution:"
+                                        + res_offset
                                         );
                 writeStream.WriteLine();
 

@@ -12,3 +12,10 @@ C:\Users\Administrator\Desktop\k-agv-editor\k-agv-editor\bin\Debug\k-agv-editor.
 C:\Users\Administrator\Desktop\k-agv-editor\k-agv-editor\obj\x86\Debug\k_agv_editor.Form1.resources
 C:\Users\Administrator\Desktop\k-agv-editor\k-agv-editor\obj\x86\Debug\k_agv_editor.Properties.Resources.resources
 C:\Users\Administrator\Desktop\k-agv-editor\k-agv-editor\obj\x86\Debug\k-agv-editor.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\obj\x86\Debug\k-agv-editor.exe
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\obj\x86\Debug\k-agv-editor.pdb
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\bin\Debug\k-agv-editor.exe
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\bin\Debug\k-agv-editor.pdb
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\obj\x86\Debug\k_agv_editor.Form1.resources
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\obj\x86\Debug\k_agv_editor.Properties.Resources.resources
+C:\Users\Administrator\Desktop\k-aGv\editor\k-agv-editor\obj\x86\Debug\k-agv-editor.csproj.GenerateResource.Cache
