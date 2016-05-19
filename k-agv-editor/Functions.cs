@@ -188,10 +188,21 @@ namespace k_agv_editor
                 {
                     for (i = 0; i < map.GetLength(0); i++)
                     {
-                        writeStream.Write(map[i, z] + " ");
+                        if (i == map.GetLength(0) - 1)
+                        {
+                            writeStream.Write(map[i, z]);
+                        }
+                        else
+                        {
+                            writeStream.Write(map[i, z] + " ");
+                        }
                     }
-                    writeStream.WriteLine();
-                    
+                    if (z == map.GetLength(1) - 1)
+                    { }
+                    else
+                    {
+                        writeStream.WriteLine();
+                    }
                 }
                 writeStream.Close();
             }
