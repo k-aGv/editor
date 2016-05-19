@@ -174,11 +174,11 @@ namespace k_agv_editor
             {
                 StreamWriter writeStream = new StreamWriter(sfd_map.FileName);
                 writeStream.WriteLine("Map Info:");
-                writeStream.WriteLine("Width blocks:"
+                writeStream.WriteLine("Width_blocks: "
                                         + map.GetLength(0)
-                                        + " Height blocks:"
+                                        + " Height_blocks: "
                                         + map.GetLength(1)
-                                        + " Resolution:"
+                                        + " Resolution: "
                                         + res_offset
                                         );
                 writeStream.WriteLine();
