@@ -160,6 +160,7 @@ namespace k_agv_editor
 
         private string getResDir()
         {
+             
             DirectoryInfo dir = new DirectoryInfo(
             Directory.GetCurrentDirectory());
             while (dir != null && !dir.GetFiles("*.sln").Any())
@@ -167,6 +168,12 @@ namespace k_agv_editor
                 dir = dir.Parent;
             }
             return Convert.ToString(dir.FullName + "\\k-agv-editor\\Resources\\");
+             
+			 //RELEASE ONLY
+            //MessageBox.Show(Convert.ToString(Directory.GetCurrentDirectory()+"\\"));
+            //return Convert.ToString(Directory.GetCurrentDirectory()+"\\Resources\\");
+            
+            
         }
         private void setImage(string _clickflag, MouseEventArgs e)
         {
