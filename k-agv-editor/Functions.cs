@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Security.Cryptography;
 namespace k_agv_editor
 {
     public partial class Form1 : Form
@@ -30,6 +31,30 @@ namespace k_agv_editor
          * 4=load
          */
         int[,] map;
+
+        //md5 samples from MSDN
+        /*
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
+         * */
 
         private void init()
         {
@@ -173,6 +198,7 @@ namespace k_agv_editor
             if (sfd_map.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter writeStream = new StreamWriter(sfd_map.FileName);
+
                 writeStream.WriteLine("Map Info:");
                 writeStream.WriteLine("Width_blocks: "
                                         + map.GetLength(0)
@@ -204,7 +230,25 @@ namespace k_agv_editor
                         writeStream.WriteLine();
                     }
                 }
+
                 writeStream.Close();
+                
+                //md5 initialization
+                /*
+                StreamReader readOriginalFile = new StreamReader(sfd_map.FileName);
+                string originalfile = readOriginalFile.ReadToEnd();
+                readOriginalFile.Close();
+                
+                using (MD5 md5hash = MD5.Create())
+                {
+                    string hash = GetMd5Hash(md5hash, originalfile);
+                    StreamWriter md5writer = new StreamWriter(sfd_map.FileName+".md5");
+                    md5writer.WriteLine(hash);
+                    md5writer.Close();
+                }
+                 */
+
+                
             }
         }
         private void cleanMapArray()

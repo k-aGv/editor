@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Security.Cryptography;
+
 namespace k_agv_editor
 {
     public partial class Form1 : Form
