@@ -190,6 +190,7 @@ namespace k_agv_editor
                     {
                         writeStream.Write(map[i, z] + " ");
                     }
+                    writeStream.WriteLine();
                     
                 }
                 writeStream.Close();
