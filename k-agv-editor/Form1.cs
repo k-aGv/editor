@@ -53,7 +53,36 @@ namespace k_agv_editor
                 , res_offset
                 , res_offset);
              */
-            setImage(clickflag,e);
+            if (isFirstEntryEntrance && pressedEntrance)
+            {
+                MessageBox.Show("1");
+                clickflag = "entrance";
+                setImage(clickflag, e);
+                isFirstEntryEntrance = !isFirstEntryEntrance;
+                
+            }
+            else 
+            {
+                MessageBox.Show("2");
+                pb_array[foundEntrance].Dispose();
+                updateGridOnly();
+                clickflag = "new_entrance";
+                setImage(clickflag, e);
+                
+            }
+
+            if (isFirstEntryExit && pressedExit)
+            {
+                setImage(clickflag, e);
+                isFirstEntryExit = !isFirstEntryExit;
+                clickflag = "new_exit";
+            }
+            else
+            {
+                pb_array[foundExit].Dispose();
+                updateGridOnly();
+                setImage(clickflag, e);
+            }
             setComboboxes(clickflag);
             buildMap(clickflag, e);
           
@@ -61,14 +90,36 @@ namespace k_agv_editor
        
         private void btn_entrance_Click(object sender, EventArgs e)
         {
-            clickflag = "entrance";
-            label1.Text = "";
+            pressedEntrance = true;
+            pressedExit = false;
+            if (isFirstEntryEntrance)
+            {
+                clickflag = "entrance";
+                label1.Text = "";
+            }
+            else
+            {
+                clickflag = "new_entrance";
+            }
+          
+            
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            clickflag = "exit";
-            label2.Text = "";
+            pressedEntrance = false ;
+            pressedExit = true;
+            if (isFirstEntryExit)
+            {
+                clickflag = "exit";
+                label2.Text = "";
+          
+            }
+            else
+            {
+                clickflag = "new_exit";
+            }
+           
         }
 
         private void btn_walls_Click(object sender, EventArgs e)

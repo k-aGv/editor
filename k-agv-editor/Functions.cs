@@ -15,11 +15,21 @@ namespace k_agv_editor
     {
         Graphics gp;
         int res_offset;
+
         
         PictureBox[] pb_array = new PictureBox[100];
         int array_counter = 0;
 
         string clickflag;
+
+        bool isFirstEntryEntrance = true;
+        bool isFirstEntryExit = true;
+
+        bool pressedEntrance = false;
+        bool pressedExit = false;
+
+        int foundEntrance;
+        int foundExit;
 
         /*
          * Map file
@@ -92,6 +102,26 @@ namespace k_agv_editor
             }
         }
 
+        private void updateGridOnly()
+        {
+            panel_editor.Refresh();
+            int a, b;
+            gp.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bicubic;
+            using (Pen p = new Pen(Color.Black))
+            {
+                for (a = 0; a < panel_editor.Width; a += res_offset)
+                {
+                    gp.DrawLine(p, a, 0, a, panel_editor.Height);
+                }
+
+                for (b = 0; b < panel_editor.Height; b += res_offset)
+                {
+                    gp.DrawLine(p, 0, b, panel_editor.Width, b);
+                }
+                //Watch out.Grid's size is 500+1,350+1...+1 because the known border bug
+            }
+
+        }
         private void updateGrid()
         {
             killPBs();
@@ -179,18 +209,91 @@ namespace k_agv_editor
         {
             try
             {
-                pb_array[array_counter] = new PictureBox();
-                Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
-                pb_array[array_counter].Name = _clickflag + "_"+array_counter.ToString();
-                pb_array[array_counter].BackColor = panel_editor.BackColor;
-                pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
-                pb_array[array_counter].Location = _tempPoint;
-                pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
-                pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
-                pb_array[array_counter].Size = new Size(res_offset, res_offset);
-                pb_array[array_counter].Visible = true;
-                panel_editor.Controls.Add(pb_array[array_counter]);
-                array_counter++;
+                if (_clickflag == "new_entrance")
+                {
+                    pb_array[array_counter] = new PictureBox();
+                    Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
+                    pb_array[array_counter].Name = "entrance" ;
+                    pb_array[array_counter].BackColor = panel_editor.BackColor;
+                    pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                    pb_array[array_counter].Location = _tempPoint;
+                    pb_array[array_counter].Image = Image.FromFile(getResDir() + "entrance" + ".png");
+                    pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                    pb_array[array_counter].Visible = true;
+                    panel_editor.Controls.Add(pb_array[array_counter]);
+                    foundEntrance = array_counter;
+                    array_counter++;
+                }
+                else if (_clickflag == "new_exit")
+                {
+                    pb_array[array_counter] = new PictureBox();
+                    Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
+                    pb_array[array_counter].Name = "exit";
+                    pb_array[array_counter].BackColor = panel_editor.BackColor;
+                    pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                    pb_array[array_counter].Location = _tempPoint;
+                    pb_array[array_counter].Image = Image.FromFile(getResDir() + "exit" + ".png");
+                    pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                    pb_array[array_counter].Visible = true;
+                    panel_editor.Controls.Add(pb_array[array_counter]);
+                    foundExit = array_counter;
+                    array_counter++;
+                }
+                else
+                {
+                   
+
+                    pb_array[array_counter] = new PictureBox();
+                    Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
+                    if (_clickflag == "entrance")
+                    {
+                        foundEntrance = array_counter;
+                        pb_array[array_counter].Name = _clickflag;
+
+                        pb_array[array_counter].BackColor = panel_editor.BackColor;
+                        pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                        pb_array[array_counter].Location = _tempPoint;
+                        pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
+                        pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                        pb_array[array_counter].Visible = true;
+                        panel_editor.Controls.Add(pb_array[array_counter]);
+                        array_counter++;
+
+                    }
+                    else if (_clickflag == "exit")
+                    {
+                        foundExit = array_counter;
+                        pb_array[array_counter].Name = _clickflag;
+
+                        pb_array[array_counter].BackColor = panel_editor.BackColor;
+                        pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                        pb_array[array_counter].Location = _tempPoint;
+                        pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
+                        pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                        pb_array[array_counter].Visible = true;
+                        panel_editor.Controls.Add(pb_array[array_counter]);
+                        array_counter++;
+                       
+                    }
+                    else
+                    {
+                        pb_array[array_counter].Name = _clickflag + "_" + array_counter.ToString();
+                        pb_array[array_counter].BackColor = panel_editor.BackColor;
+                        pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                        pb_array[array_counter].Location = _tempPoint;
+                        pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
+                        pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                        pb_array[array_counter].Visible = true;
+                        panel_editor.Controls.Add(pb_array[array_counter]);
+                        array_counter++;
+                    }
+                }
+               
                 
             }
             catch (Exception ex)
