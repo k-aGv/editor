@@ -53,36 +53,47 @@ namespace k_agv_editor
                 , res_offset
                 , res_offset);
              */
-            if (isFirstEntryEntrance && pressedEntrance)
+            if (pressedEntrance)
             {
-                MessageBox.Show("1");
-                clickflag = "entrance";
-                setImage(clickflag, e);
-                isFirstEntryEntrance = !isFirstEntryEntrance;
-                
-            }
-            else 
-            {
-                MessageBox.Show("2");
-                pb_array[foundEntrance].Dispose();
-                updateGridOnly();
-                clickflag = "new_entrance";
-                setImage(clickflag, e);
-                
-            }
+                if(isFirstEntryEntrance)
+                {
+                    // MessageBox.Show("1");
+                    clickflag = "entrance";
+                    setImage(clickflag, e);
+                    isFirstEntryEntrance = !isFirstEntryEntrance;
 
-            if (isFirstEntryExit && pressedExit)
+                }
+                else
+                {
+                    //MessageBox.Show("2");
+                    pb_array[foundEntrance].Dispose();
+                    updateGridOnly();
+                    clickflag = "new_entrance";
+                    setImage(clickflag, e);
+
+                }
+
+            }
+            else if (pressedExit)
             {
-                setImage(clickflag, e);
-                isFirstEntryExit = !isFirstEntryExit;
-                clickflag = "new_exit";
+                if (isFirstEntryExit)
+                {
+                    setImage(clickflag, e);
+                    isFirstEntryExit = !isFirstEntryExit;
+                    clickflag = "new_exit";
+                }
+                else
+                {
+                    pb_array[foundExit].Dispose();
+                    updateGridOnly();
+                    setImage(clickflag, e);
+                }
             }
             else
             {
-                pb_array[foundExit].Dispose();
-                updateGridOnly();
                 setImage(clickflag, e);
             }
+                
             setComboboxes(clickflag);
             buildMap(clickflag, e);
           
@@ -124,12 +135,17 @@ namespace k_agv_editor
 
         private void btn_walls_Click(object sender, EventArgs e)
         {
+            pressedEntrance = false;
+            pressedExit = false;
+
             clickflag = "wall";
             label3.Text = "";
         }
 
         private void btn_carry_Click(object sender, EventArgs e)
         {
+            pressedEntrance = false;
+            pressedExit = false;
             clickflag = "loads";
             label4.Text = "";
 

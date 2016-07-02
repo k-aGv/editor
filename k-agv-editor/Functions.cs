@@ -69,7 +69,8 @@ namespace k_agv_editor
         private void init()
         {
             pb_export.Visible = false;
-
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             gp = panel_editor.CreateGraphics();
             gb_tools.Visible = false;
             nud_res.Increment = 25;
@@ -145,12 +146,12 @@ namespace k_agv_editor
         }
         private void setComboboxes(string _clickflag)
         {
-            if (_clickflag == "entrance")
+            if (_clickflag == "entrance" || _clickflag =="new_entrance")
             {
                 cb_entrance.Text = "Correct!";
                 cb_entrance.Checked = true;
             }
-            else if (_clickflag == "exit")
+            else if (_clickflag == "exit" || _clickflag == "new_exit")
             {
                 cb_exit.Text = "Correct!";
                 cb_exit.Checked = true;
@@ -244,11 +245,11 @@ namespace k_agv_editor
                 else
                 {
                    
-
                     pb_array[array_counter] = new PictureBox();
                     Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
                     if (_clickflag == "entrance")
                     {
+                        //MessageBox.Show("komple");
                         foundEntrance = array_counter;
                         pb_array[array_counter].Name = _clickflag;
 
