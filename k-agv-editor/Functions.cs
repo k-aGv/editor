@@ -271,12 +271,16 @@ namespace k_agv_editor
 
                     pb_array[array_counter] = new PictureBox();
                     Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
-                    if (_clickflag == "entrance")
+                    if (_clickflag == "entrance" || _clickflag == "exit" || _clickflag == "station")
                     {
-                        //MessageBox.Show("komple");
-                        foundEntrance = array_counter;
-                        pb_array[array_counter].Name = _clickflag;
+                        if (_clickflag == "entrance")
+                            foundEntrance = array_counter;
+                        else if (_clickflag == "exit")
+                            foundExit = array_counter;
+                        else
+                            foundStation = array_counter;
 
+                        pb_array[array_counter].Name = _clickflag;
                         pb_array[array_counter].BackColor = panel_editor.BackColor;
                         pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
                         pb_array[array_counter].Location = _tempPoint;
@@ -287,37 +291,6 @@ namespace k_agv_editor
                         panel_editor.Controls.Add(pb_array[array_counter]);
                         array_counter++;
 
-                    }
-                    else if (_clickflag == "exit")
-                    {
-                        foundExit = array_counter;
-                        pb_array[array_counter].Name = _clickflag;
-
-                        pb_array[array_counter].BackColor = panel_editor.BackColor;
-                        pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
-                        pb_array[array_counter].Location = _tempPoint;
-                        pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
-                        pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
-                        pb_array[array_counter].Size = new Size(res_offset, res_offset);
-                        pb_array[array_counter].Visible = true;
-                        panel_editor.Controls.Add(pb_array[array_counter]);
-                        array_counter++;
-
-                    }
-                    else if (_clickflag == "station")
-                    {
-                        foundStation = array_counter;
-                        pb_array[array_counter].Name = _clickflag;
-
-                        pb_array[array_counter].BackColor = panel_editor.BackColor;
-                        pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
-                        pb_array[array_counter].Location = _tempPoint;
-                        pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
-                        pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
-                        pb_array[array_counter].Size = new Size(res_offset, res_offset);
-                        pb_array[array_counter].Visible = true;
-                        panel_editor.Controls.Add(pb_array[array_counter]);
-                        array_counter++;
                     }
                     else
                     {
@@ -417,8 +390,6 @@ namespace k_agv_editor
                 }
             }
         }
-
-
 
     }
 }
