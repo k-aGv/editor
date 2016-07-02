@@ -35,6 +35,7 @@ namespace k_agv_editor
             }
             else
             {
+                panel_editor.Visible = true;
                 pb_export.Visible = true;
                 gb_tools.Visible = true;
                 res_offset = Convert.ToInt32(nud_res.Value);
@@ -46,6 +47,18 @@ namespace k_agv_editor
        
         private void panel_editor_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                MessageBox.Show("Right click pressed");
+                return;//Sorcery return even its void.We leave function to not execute array calculations
+            }
+            if (array_counter == 0 )
+            {
+               
+                MessageBox.Show("Please select an object for drawing");
+                return;//Sorcery return even its void.We leave function to not execute array calculations
+            }
+
             if (pressedEntrance)
             {
                 if(isFirstEntryEntrance)
@@ -106,6 +119,9 @@ namespace k_agv_editor
        
         private void btn_entrance_Click(object sender, EventArgs e)
         {
+            if (panel_editor.Visible == false)
+                panel_editor.Visible = true;
+
             pressedEntrance = true;
             pressedExit = false;
             pressedStation = false;
@@ -123,6 +139,9 @@ namespace k_agv_editor
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            if (panel_editor.Visible == false)
+                panel_editor.Visible = true;
+
             pressedEntrance = false ;
             pressedStation = false;
             pressedExit = true;
@@ -139,6 +158,9 @@ namespace k_agv_editor
         }
         private void btn_fuel_Click(object sender, EventArgs e)
         {
+            if (panel_editor.Visible == false)
+                panel_editor.Visible = true;
+
             pressedEntrance = false;
             pressedExit = false;
             pressedStation = true;
@@ -155,6 +177,9 @@ namespace k_agv_editor
 
         private void btn_walls_Click(object sender, EventArgs e)
         {
+            if (panel_editor.Visible == false)
+                panel_editor.Visible = true;
+
             pressedEntrance = false;
             pressedExit = false;
             pressedStation = false;
@@ -165,6 +190,9 @@ namespace k_agv_editor
 
         private void btn_carry_Click(object sender, EventArgs e)
         {
+            if (panel_editor.Visible == false)
+                panel_editor.Visible = true;
+
             pressedEntrance = false;
             pressedExit = false;
             pressedStation = false;
@@ -177,6 +205,8 @@ namespace k_agv_editor
         {
             exportMapToFile();
         }
+
+        
 
        
     }

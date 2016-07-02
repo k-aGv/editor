@@ -94,6 +94,8 @@ namespace k_agv_editor
             cb_exit.Checked = false;
             cb_wall.Checked = false;
 
+            panel_editor.Visible = false;
+
             pb_export.Image = Image.FromFile(getResDir() + "export.png");
             pb_export.SizeMode = PictureBoxSizeMode.StretchImage;
         }
