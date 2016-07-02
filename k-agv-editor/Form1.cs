@@ -57,7 +57,7 @@ namespace k_agv_editor
             {
                 if(isFirstEntryEntrance)
                 {
-                    // MessageBox.Show("1");
+                    
                     clickflag = "entrance";
                     setImage(clickflag, e);
                     isFirstEntryEntrance = !isFirstEntryEntrance;
@@ -65,7 +65,7 @@ namespace k_agv_editor
                 }
                 else
                 {
-                    //MessageBox.Show("2");
+                   
                     pb_array[foundEntrance].Dispose();
                     updateGridOnly();
                     clickflag = "new_entrance";
@@ -89,6 +89,22 @@ namespace k_agv_editor
                     setImage(clickflag, e);
                 }
             }
+            else if (pressedStation)
+            {
+                if (isFirstEntryStation)
+                {
+                    setImage(clickflag, e);
+                    isFirstEntryStation = !isFirstEntryStation;
+                    clickflag = "new_station";
+                }
+                else
+                {
+                    pb_array[foundStation].Dispose();
+                    updateGridOnly();
+                    setImage(clickflag, e);
+                }
+            }
+
             else
             {
                 setImage(clickflag, e);
@@ -103,6 +119,7 @@ namespace k_agv_editor
         {
             pressedEntrance = true;
             pressedExit = false;
+            pressedStation = false;
             if (isFirstEntryEntrance)
             {
                 clickflag = "entrance";
@@ -119,6 +136,7 @@ namespace k_agv_editor
         private void btn_exit_Click(object sender, EventArgs e)
         {
             pressedEntrance = false ;
+            pressedStation = false;
             pressedExit = true;
             if (isFirstEntryExit)
             {
@@ -137,6 +155,7 @@ namespace k_agv_editor
         {
             pressedEntrance = false;
             pressedExit = false;
+            pressedStation = false;
 
             clickflag = "wall";
             label3.Text = "";
@@ -146,15 +165,33 @@ namespace k_agv_editor
         {
             pressedEntrance = false;
             pressedExit = false;
+            pressedStation = false;
             clickflag = "loads";
             label4.Text = "";
 
         }
+        private void btn_fuel_Click(object sender, EventArgs e)
+        {
+            pressedEntrance = false;
+            pressedExit = false;
+            pressedStation = true;
+            if (isFirstEntryStation)
+            {
+                clickflag = "station";
+                label1.Text = "";
+            }
+            else
+            {
+                clickflag = "new_station";
+            }
+        }
+
 
         private void pb_export_Click(object sender, EventArgs e)
         {
             exportMapToFile();
         }
 
+       
     }
 }

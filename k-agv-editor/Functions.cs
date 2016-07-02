@@ -24,12 +24,15 @@ namespace k_agv_editor
 
         bool isFirstEntryEntrance = true;
         bool isFirstEntryExit = true;
+        bool isFirstEntryStation = true;
 
         bool pressedEntrance = false;
         bool pressedExit = false;
+        bool pressedStation = false;
 
         int foundEntrance;
         int foundExit;
+        int foundStation;
 
         /*
          * Map file
@@ -38,7 +41,8 @@ namespace k_agv_editor
          * 1=entrance
          * 2=exit
          * 3=wall
-         * 4=load
+         * 4=station
+         * 5=load
          */
         int[,] map;
 
@@ -170,11 +174,11 @@ namespace k_agv_editor
         }
         private void buildMap(string _clickflag, MouseEventArgs e)
         {
-            if (_clickflag == "entrance")
+            if (_clickflag == "entrance" || _clickflag == "new_entrance" )
             {
                 map[(e.X / res_offset) , (e.Y / res_offset)] = 1;
             }
-            else if (_clickflag == "exit")
+            else if (_clickflag == "exit" || _clickflag == "new_exit" )
             {
                 map[(e.X / res_offset), (e.Y / res_offset)] = 2;
             }
@@ -182,9 +186,13 @@ namespace k_agv_editor
             {
                 map[(e.X / res_offset), (e.Y / res_offset)]  = 3;
             }
-            else
+            else if (_clickflag == "station" || _clickflag =="new_station" )
             {
                 map[(e.X / res_offset), (e.Y / res_offset)] = 4;
+            }
+            else//load
+            {
+                map[(e.X / res_offset), (e.Y / res_offset)] = 5;
             }
            
         }
@@ -242,9 +250,25 @@ namespace k_agv_editor
                     foundExit = array_counter;
                     array_counter++;
                 }
+                else if (_clickflag == "new_station")
+                {
+                    pb_array[array_counter] = new PictureBox();
+                    Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
+                    pb_array[array_counter].Name = "station";
+                    pb_array[array_counter].BackColor = panel_editor.BackColor;
+                    pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                    pb_array[array_counter].Location = _tempPoint;
+                    pb_array[array_counter].Image = Image.FromFile(getResDir() + "station" + ".png");
+                    pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                    pb_array[array_counter].Visible = true;
+                    panel_editor.Controls.Add(pb_array[array_counter]);
+                    foundStation = array_counter;
+                    array_counter++;
+                }
                 else
                 {
-                   
+
                     pb_array[array_counter] = new PictureBox();
                     Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
                     if (_clickflag == "entrance")
@@ -278,7 +302,22 @@ namespace k_agv_editor
                         pb_array[array_counter].Visible = true;
                         panel_editor.Controls.Add(pb_array[array_counter]);
                         array_counter++;
-                       
+
+                    }
+                    else if (_clickflag == "station")
+                    {
+                        foundStation = array_counter;
+                        pb_array[array_counter].Name = _clickflag;
+
+                        pb_array[array_counter].BackColor = panel_editor.BackColor;
+                        pb_array[array_counter].BorderStyle = BorderStyle.FixedSingle;
+                        pb_array[array_counter].Location = _tempPoint;
+                        pb_array[array_counter].Image = Image.FromFile(getResDir() + _clickflag + ".png");
+                        pb_array[array_counter].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pb_array[array_counter].Size = new Size(res_offset, res_offset);
+                        pb_array[array_counter].Visible = true;
+                        panel_editor.Controls.Add(pb_array[array_counter]);
+                        array_counter++;
                     }
                     else
                     {

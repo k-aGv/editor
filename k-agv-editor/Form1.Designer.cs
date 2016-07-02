@@ -50,6 +50,7 @@
             this.cb_entrance = new System.Windows.Forms.CheckBox();
             this.pb_export = new System.Windows.Forms.PictureBox();
             this.sfd_map = new System.Windows.Forms.SaveFileDialog();
+            this.btn_fuel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_res)).BeginInit();
             this.gb_tools.SuspendLayout();
             this.gb_laods.SuspendLayout();
@@ -144,6 +145,7 @@
             // 
             // gb_walls
             // 
+            this.gb_walls.Controls.Add(this.btn_fuel);
             this.gb_walls.Controls.Add(this.btn_walls);
             this.gb_walls.Controls.Add(this.label3);
             this.gb_walls.Location = new System.Drawing.Point(9, 178);
@@ -151,7 +153,7 @@
             this.gb_walls.Size = new System.Drawing.Size(180, 73);
             this.gb_walls.TabIndex = 8;
             this.gb_walls.TabStop = false;
-            this.gb_walls.Text = "Walls";
+            this.gb_walls.Text = "Walls and Fuel";
             // 
             // btn_walls
             // 
@@ -279,6 +281,16 @@
             this.pb_export.TabStop = false;
             this.pb_export.Click += new System.EventHandler(this.pb_export_Click);
             // 
+            // btn_fuel
+            // 
+            this.btn_fuel.Location = new System.Drawing.Point(96, 19);
+            this.btn_fuel.Name = "btn_fuel";
+            this.btn_fuel.Size = new System.Drawing.Size(75, 23);
+            this.btn_fuel.TabIndex = 6;
+            this.btn_fuel.Text = "Fuel";
+            this.btn_fuel.UseVisualStyleBackColor = true;
+            this.btn_fuel.Click += new System.EventHandler(this.btn_fuel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,6 +345,7 @@
         private System.Windows.Forms.CheckBox cb_entrance;
         private System.Windows.Forms.PictureBox pb_export;
         private System.Windows.Forms.SaveFileDialog sfd_map;
+        private System.Windows.Forms.Button btn_fuel;
     }
 }
 
