@@ -49,10 +49,10 @@ namespace k_agv_editor
         {
             if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show("Right click pressed");
+                 MessageBox.Show("Right click pressed.Will handle it later");
                 return;//Sorcery return even its void.We leave function to not execute array calculations
             }
-            if (array_counter == 0 )
+            if (array_counter == 0 && somethingSelected == false)
             {
                
                 MessageBox.Show("Please select an object for drawing");
@@ -119,6 +119,8 @@ namespace k_agv_editor
        
         private void btn_entrance_Click(object sender, EventArgs e)
         {
+            somethingSelected = true;
+
             if (panel_editor.Visible == false)
                 panel_editor.Visible = true;
 
@@ -139,6 +141,8 @@ namespace k_agv_editor
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            somethingSelected = true;
+
             if (panel_editor.Visible == false)
                 panel_editor.Visible = true;
 
@@ -158,6 +162,8 @@ namespace k_agv_editor
         }
         private void btn_fuel_Click(object sender, EventArgs e)
         {
+            somethingSelected = true;
+
             if (panel_editor.Visible == false)
                 panel_editor.Visible = true;
 
@@ -177,6 +183,8 @@ namespace k_agv_editor
 
         private void btn_walls_Click(object sender, EventArgs e)
         {
+            somethingSelected = true;
+
             if (panel_editor.Visible == false)
                 panel_editor.Visible = true;
 
@@ -190,6 +198,8 @@ namespace k_agv_editor
 
         private void btn_carry_Click(object sender, EventArgs e)
         {
+            somethingSelected = true;
+
             if (panel_editor.Visible == false)
                 panel_editor.Visible = true;
 

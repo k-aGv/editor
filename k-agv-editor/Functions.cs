@@ -26,6 +26,8 @@ namespace k_agv_editor
         bool isFirstEntryExit = true;
         bool isFirstEntryStation = true;
 
+        bool somethingSelected = false;
+
         bool pressedEntrance = false;
         bool pressedExit = false;
         bool pressedStation = false;
