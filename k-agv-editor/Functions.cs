@@ -224,6 +224,14 @@ namespace k_agv_editor
             {
                 if (_clickflag == "new_entrance")
                 {
+                    for (int z = 0; z < map.GetLength(1); z++)
+                    {
+                        for (int i = 0; i < map.GetLength(0); i++)
+                        {
+                            if (map[i,z] == 1)
+                                map[i,z] = 0;//remove any old-drawn entrance
+                        }
+                    }
                     pb_array[array_counter] = new PictureBox();
                     Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
                     pb_array[array_counter].Name = "entrance" ;
@@ -240,6 +248,14 @@ namespace k_agv_editor
                 }
                 else if (_clickflag == "new_exit")
                 {
+                    for (int z = 0; z < map.GetLength(1); z++)
+                    {
+                        for (int i = 0; i < map.GetLength(0); i++)
+                        {
+                            if (map[i, z] == 2)
+                                map[i, z] = 0;//remove any old-drawn exit
+                        }
+                    }
                     pb_array[array_counter] = new PictureBox();
                     Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
                     pb_array[array_counter].Name = "exit";
@@ -256,6 +272,14 @@ namespace k_agv_editor
                 }
                 else if (_clickflag == "new_station")
                 {
+                    for (int z = 0; z < map.GetLength(1); z++)
+                    {
+                        for (int i = 0; i < map.GetLength(0); i++)
+                        {
+                            if (map[i, z] == 4)
+                                map[i, z] = 0;//remove any old-drawn station
+                        }
+                    }
                     pb_array[array_counter] = new PictureBox();
                     Point _tempPoint = new Point((e.X / res_offset) * res_offset, (e.Y / res_offset) * res_offset);
                     pb_array[array_counter].Name = "station";
