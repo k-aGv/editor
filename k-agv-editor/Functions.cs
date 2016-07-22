@@ -80,7 +80,7 @@ namespace k_agv_editor
             gp = panel_editor.CreateGraphics();
             gb_tools.Visible = false;
             nud_res.Increment = 25;
-            nud_res.Maximum = 100;
+            nud_res.Maximum = 50;
             cb_loads.Text = "";
             cb_entrance.Text = "";
             cb_exit.Text = "";

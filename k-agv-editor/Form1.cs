@@ -24,7 +24,7 @@ namespace k_agv_editor
         {
             init();
         }
-       
+        
         private void nud_res_ValueChanged(object sender, EventArgs e)
         {
             if (nud_res.Value == 0)

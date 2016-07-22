@@ -37,6 +37,7 @@
             this.btn_carry = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.gb_walls = new System.Windows.Forms.GroupBox();
+            this.btn_fuel = new System.Windows.Forms.Button();
             this.btn_walls = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.gb_exit = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,6 @@
             this.cb_entrance = new System.Windows.Forms.CheckBox();
             this.pb_export = new System.Windows.Forms.PictureBox();
             this.sfd_map = new System.Windows.Forms.SaveFileDialog();
-            this.btn_fuel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_res)).BeginInit();
             this.gb_tools.SuspendLayout();
             this.gb_laods.SuspendLayout();
@@ -81,6 +81,11 @@
             // nud_res
             // 
             this.nud_res.Location = new System.Drawing.Point(608, 10);
+            this.nud_res.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.nud_res.Name = "nud_res";
             this.nud_res.Size = new System.Drawing.Size(53, 20);
             this.nud_res.TabIndex = 2;
@@ -154,6 +159,16 @@
             this.gb_walls.TabIndex = 8;
             this.gb_walls.TabStop = false;
             this.gb_walls.Text = "Walls and Fuel";
+            // 
+            // btn_fuel
+            // 
+            this.btn_fuel.Location = new System.Drawing.Point(96, 19);
+            this.btn_fuel.Name = "btn_fuel";
+            this.btn_fuel.Size = new System.Drawing.Size(75, 23);
+            this.btn_fuel.TabIndex = 6;
+            this.btn_fuel.Text = "Fuel";
+            this.btn_fuel.UseVisualStyleBackColor = true;
+            this.btn_fuel.Click += new System.EventHandler(this.btn_fuel_Click);
             // 
             // btn_walls
             // 
@@ -280,16 +295,6 @@
             this.pb_export.TabIndex = 5;
             this.pb_export.TabStop = false;
             this.pb_export.Click += new System.EventHandler(this.pb_export_Click);
-            // 
-            // btn_fuel
-            // 
-            this.btn_fuel.Location = new System.Drawing.Point(96, 19);
-            this.btn_fuel.Name = "btn_fuel";
-            this.btn_fuel.Size = new System.Drawing.Size(75, 23);
-            this.btn_fuel.TabIndex = 6;
-            this.btn_fuel.Text = "Fuel";
-            this.btn_fuel.UseVisualStyleBackColor = true;
-            this.btn_fuel.Click += new System.EventHandler(this.btn_fuel_Click);
             // 
             // Form1
             // 
