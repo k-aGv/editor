@@ -31,3 +31,5 @@ C:\Users\Administrator\Desktop\editor-master\k-agv-editor\obj\x86\Debug\Generate
 C:\Users\Administrator\Desktop\editor-master\k-agv-editor\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Administrator.Γιάννης-PC\Desktop\editor-master\k-agv-editor\obj\x86\Debug\k-agv-editor.exe
 C:\Users\Administrator.Γιάννης-PC\Desktop\editor-master\k-agv-editor\obj\x86\Debug\k-agv-editor.pdb
+C:\Users\Administrator.Γιάννης-PC\Desktop\GIT\k-aGv\editor\k-agv-editor\obj\x86\Debug\k-agv-editor.exe
+C:\Users\Administrator.Γιάννης-PC\Desktop\GIT\k-aGv\editor\k-agv-editor\obj\x86\Debug\k-agv-editor.pdb
