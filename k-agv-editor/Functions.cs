@@ -210,11 +210,11 @@ namespace k_agv_editor
             {
                 dir = dir.Parent;
             }
-            return Convert.ToString(dir.FullName + "\\k-agv-editor\\Resources\\");
+           // return Convert.ToString(dir.FullName + "\\k-agv-editor\\Resources\\");
              
 			 //RELEASE ONLY
             //MessageBox.Show(Convert.ToString(Directory.GetCurrentDirectory()+"\\"));
-            //return Convert.ToString(Directory.GetCurrentDirectory()+"\\Resources\\");
+            return Convert.ToString(Directory.GetCurrentDirectory()+"\\Resources\\");
             
             
         }
@@ -419,5 +419,8 @@ namespace k_agv_editor
             }
         }
 
+     
+
+      
     }
 }
